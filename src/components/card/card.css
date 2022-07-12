@@ -1,0 +1,45 @@
+.card-box {
+  width: 250px;
+  height: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.card-box:last-child {
+  margin-right: 0;
+}
+.image-container {
+  width: 230px;
+  height: 150px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.description-row {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ff7979;
+}
+.title {
+  font-size: 22px;
+  font-weight: 550;
+}
+.description-row {
+  color: #333;
+  font-size: 17px;
+  font-weight: 400;
+}

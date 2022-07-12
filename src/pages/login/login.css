@@ -1,0 +1,16 @@
+.login-page {
+  width: 30%;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 104%), 0 0px 3px 0 rgba(0, 0, 0, 103%);
+  height: 500px;
+  padding: 40px;
+  background-color: rgb(249, 255, 255);
+}
+.form-group {
+  padding: 7px;
+}
+.login-btn {
+}
+.mt-1 {
+  text-align: center;
+}
