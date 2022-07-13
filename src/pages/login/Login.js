@@ -1,7 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux-toolkit/actions/auth";
+import { setLoggedIn, setToken } from "../../redux-toolkit/slices/authSlice";
+import { dispatch } from "../../redux-toolkit/store";
+import { toast } from "react-hot-toast";
+
 import "./login.css";
 
 const Login = () => {
@@ -9,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const history = useNavigate();
   const [loading, setLoading] = useState(false);
   const changeState = (e) => {
     const target = e.target;
@@ -22,15 +26,18 @@ const Login = () => {
     });
   };
   const submitHandler = (e) => {
-    login(state, setLoading);
-    // axios
-    //   .post(`localhost%3A5000/api/v1/auth/login`, state)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    login(state, setLoading)
+      .then((res) => {
+        dispatch(setLoggedIn(true));
+        dispatch(setToken(res?.data?.token));
+        toast.success("Logged In Successfully!");
+        history("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error?.message);
+        setLoading(false);
+      });
     e.preventDefault();
   };
 

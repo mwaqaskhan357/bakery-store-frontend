@@ -1,20 +1,14 @@
 import { apiRequest, privateRequest } from "../../utils/api";
-import { setLoggedIn, setToken } from "../slices/authSlice";
-import toast from "react-hot-toast";
 import { ServerRoutes } from "../../routes/serverRoutes";
 import { dispatch } from "../store";
+import { setLoggedIn, setToken } from "../slices/authSlice";
+import toast from "react-hot-toast";
 
 export const login = (body, setLoading) => {
-  apiRequest(ServerRoutes.LOGIN, "post", body)
-    .then((res) => {
-      console.log("response", res);
-      toast.success("Logged In Successfully!");
-    })
-    .catch((error) => {
-      console.log(error);
-      toast.error(error?.message);
-      setLoading(false);
-    });
+  return apiRequest(ServerRoutes.LOGIN, "post", body);
+};
+export const register = (body, setLoading) => {
+  return apiRequest(ServerRoutes.REGISTER, "post", body);
 };
 
 export const logout = () => {

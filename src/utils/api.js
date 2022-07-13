@@ -2,7 +2,7 @@ import { logout } from "../redux-toolkit/actions/auth";
 import { dispatch, store } from "../redux-toolkit/store";
 
 const axios = require("axios");
-const serverUrl = "localhost%3A5000/api/v1/";
+const serverUrl = "http://localhost:5000/api/v1/";
 const Api = axios.create({
   baseURL: serverUrl,
 });
