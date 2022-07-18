@@ -8,7 +8,7 @@ const Home = () => {
     <div className="home-page">
       <Header />
       <div className="home">
-        <div className="banner-box">
+        <div className="banner-box px-2 ">
           <img
             src="./assests/images/bnnr.jpg"
             alt=""
@@ -16,7 +16,7 @@ const Home = () => {
           />
         </div>
         <div className="collection px-3 mt-3">
-          <h2 className="collection-header1">Cakes</h2>
+          <h2 className="collection-header1">CAKES</h2>
           <div className="collection-row d-flex">
             <Card />
             <Card />
@@ -28,7 +28,7 @@ const Home = () => {
           </div>
         </div>
         <div className="collection px-3 mt-3">
-          <h2 className="collection-header ">Cakes</h2>
+          <h2 className="collection-header ">BISCUITS</h2>
           <div className="collection-row d-flex">
             <Card />
             <Card />
@@ -40,7 +40,31 @@ const Home = () => {
           </div>
         </div>
         <div className="collection px-3 mt-3">
-          <h2 className="collection-header ">Cakes</h2>
+          <h2 className="collection-header ">BREAD</h2>
+          <div className="collection-row d-flex">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </div>
+        <div className="collection px-3 mt-3">
+          <h2 className="collection-header ">SWEETS</h2>
+          <div className="collection-row d-flex">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </div>
+        <div className="collection px-3 mt-3">
+          <h2 className="collection-header ">BROWNIE</h2>
           <div className="collection-row d-flex">
             <Card />
             <Card />

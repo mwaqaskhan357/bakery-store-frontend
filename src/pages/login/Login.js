@@ -58,6 +58,7 @@ const Login = () => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
+
           <input
             type="password"
             id="password"
@@ -74,7 +75,7 @@ const Login = () => {
           className="btn btn-primary w-100 login-btn mt-5"
           onClick={submitHandler}
         >
-          Login
+          Sign in
         </button>
         <div className="mt-2">
           Don't have an account? <Link to="/register">Create</Link>

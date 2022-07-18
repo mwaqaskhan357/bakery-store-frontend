@@ -11,9 +11,10 @@ const CartPage = () => {
         <Cart />
         <Cart />
         <Cart />
+        <Cart />
+        <Cart />
       </div>
     </div>
-    
   );
 };
 

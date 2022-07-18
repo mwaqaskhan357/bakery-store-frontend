@@ -12,5 +12,8 @@
 }
 
 .navbar {
-  background-color: rgb(170, 179, 176);
+  background-color: rgb(240, 247, 244);
+}
+.nav-item {
+  color: black;
 }

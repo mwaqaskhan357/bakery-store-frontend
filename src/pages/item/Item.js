@@ -16,9 +16,9 @@ const Item = () => {
             className="item-image"
           />
         </div>
-        <div className="item-detail d-flex flex-column w-50 ms-3">
+        <div className="item-detail d-flex flex-column w-50 ms-3 ">
           <div className="item-title">Special cake</div>
-          <div className="item-price">PKR 100</div>
+          <div className="item-price">PKR 499</div>
           <div className="item-description">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text

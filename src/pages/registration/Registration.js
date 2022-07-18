@@ -43,10 +43,10 @@ const Registration = () => {
     e.preventDefault();
   };
   return (
-    <div className="register-page mt-5">
+    <div className="register-page mt-4">
       <h2 className="text-center">Register</h2>
       <form className="register-form">
-        <div className="form-group mt-2">
+        <div className="form-group  mt-2">
           <label htmlFor="firstname">First Name</label>
           <input
             type="text"
@@ -101,10 +101,10 @@ const Registration = () => {
             onChange={changeState}
           />
         </div>
-        <button className="btn btn-primary w-100 mt-4" onClick={submitHandler}>
+        <button className="btn btn-primary w-100 mt-5" onClick={submitHandler}>
           Register
         </button>
-        <div className="mt-2">
+        <div className="mt-5">
           Already have account? <Link to="/">Login</Link>
         </div>
       </form>
