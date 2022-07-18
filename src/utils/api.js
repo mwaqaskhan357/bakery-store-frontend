@@ -1,8 +1,8 @@
-import { logout } from "../redux-toolkit/actions/auth";
-import { dispatch, store } from "../redux-toolkit/store";
+import { logout } from '../redux-toolkit/actions/auth';
+import { dispatch, store } from '../redux-toolkit/store';
 
-const axios = require("axios");
-const serverUrl = "http://localhost:5000/api/v1/";
+const axios = require('axios');
+const serverUrl = 'http://localhost:5000/api/v1/';
 const Api = axios.create({
   baseURL: serverUrl,
 });
@@ -11,7 +11,7 @@ const api = axios.create({
 });
 api.interceptors.request.use((config) => {
   const token = store.getState().login.token;
-  config.headers.Authorization = token ? `Bearer ${token}` : "";
+  config.headers.Authorization = token ? `Bearer ${token}` : '';
   return config;
 });
 api.interceptors.response.use(
@@ -20,8 +20,9 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 403) {
-      dispatch(logout(error.response.message ?? "Session Expired"));
+      dispatch(logout(error.response.message ?? 'Session Expired'));
     }
+    return Promise.reject(error);
   }
 );
 
@@ -32,32 +33,27 @@ Api.interceptors.response.use(
   (error) => {
     console.log(error);
     if (error?.response?.status === 403) {
-      dispatch(logout(error?.response?.message ?? "Session Expired"));
+      dispatch(logout(error?.response?.message ?? 'Session Expired'));
     }
+    return Promise.reject(error);
   }
 );
 
 export const privateRequest = async (url, method, body) => {
   try {
     switch (method) {
-      case "get":
+      case 'get':
         return api.get(url);
-        break;
-      case "delete":
+      case 'delete':
         return api.delete(url);
-        break;
-      case "post":
+      case 'post':
         return api.post(url, body);
-        break;
-      case "patch":
+      case 'patch':
         return api.patch(url, body);
-        break;
-      case "put":
+      case 'put':
         return api.put(url, body);
-        break;
       default:
         return api.get(url);
-        break;
     }
   } catch (error) {
     return new Promise((resolve, reject) => {
@@ -69,24 +65,18 @@ export const privateRequest = async (url, method, body) => {
 export const apiRequest = async (url, method, body) => {
   try {
     switch (method) {
-      case "get":
+      case 'get':
         return Api.get(url);
-        break;
-      case "delete":
+      case 'delete':
         return Api.delete(url);
-        break;
-      case "post":
+      case 'post':
         return Api.post(url, body);
-        break;
-      case "patch":
+      case 'patch':
         return Api.patch(url, body);
-        break;
-      case "put":
+      case 'put':
         return Api.put(url, body);
-        break;
       default:
         return Api.get(url);
-        break;
     }
   } catch (error) {
     return new Promise((resolve, reject) => {
