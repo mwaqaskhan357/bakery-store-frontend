@@ -1,28 +1,33 @@
 import React from "react";
 import "./card.css";
 
-const Card = () => {
+const Card = ({ variant }) => {
   return (
     <div className="card-box">
       <div className="image-container">
-        <img
-          src="./assests/images/cake.jpg"
-          alt=""
-          width="280px"
-          height="150px"
-          className="card-image"
-        />
+        {variant?.image == "no-photo.jpg" ? (
+          <img
+            src="./assests/images/cake.jpg"
+            alt=""
+            width="280px"
+            height="150px"
+            className="card-image"
+          />
+        ) : (
+          <img
+            src={variant?.image}
+            alt=""
+            width="280px"
+            height="150px"
+            className="card-image"
+          />
+        )}
       </div>
       <div className="title-row d-flex justify-content-between mt-2">
-        <div className="title">Special cake</div>
-        <div className="price">PKR 550</div>
+        <div className="title">{variant?.title}</div>
+        <div className="price">PKR {variant?.price}</div>
       </div>
-      <div className="description-row mt-2">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled
-      </div>
+      <div className="description-row mt-2">{variant?.description}</div>
     </div>
   );
 };

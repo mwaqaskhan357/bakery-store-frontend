@@ -8,10 +8,7 @@ import { toast } from "react-hot-toast";
 import "./login.css";
 
 const Login = () => {
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-  });
+  const [state, setState] = useState({ email: "", password: "" });
   const history = useNavigate();
   const [loading, setLoading] = useState(false);
   const changeState = (e) => {
@@ -35,7 +32,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error?.message);
+        toast.error("Incorrect email or password");
         setLoading(false);
       });
     e.preventDefault();
@@ -43,9 +40,9 @@ const Login = () => {
 
   return (
     <div className="login-page mt-5">
-      <h2 className="text-center">Login</h2>
-      <form className="login-form">
-        <div className="form-group">
+      <h2 className="text-center text-dark">Login</h2>
+      <form className="login-form ">
+        <div className="form-group ">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -56,28 +53,29 @@ const Login = () => {
             onChange={changeState}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-3">
           <label htmlFor="password">Password</label>
 
           <input
             type="password"
             id="password"
             name="password"
-            className="form-control"
+            className="form-control mb-2"
             value={state.password}
             onChange={changeState}
           />
+          <a href="#" className="mt-2 float-end ">
+            Forget password
+          </a>
         </div>
-        <a href="#" className="mt-1">
-          Forget password
-        </a>
+
         <button
-          className="btn btn-primary w-100 login-btn mt-5"
+          className="btn btn-success w-100 login-btn mt-5"
           onClick={submitHandler}
         >
           Sign in
         </button>
-        <div className="mt-2">
+        <div className="mt-4 ">
           Don't have an account? <Link to="/register">Create</Link>
         </div>
       </form>

@@ -11,6 +11,7 @@ const Registration = () => {
     first_name: "",
     last_name: "",
     email: "",
+    city: "",
     password: "",
     cpassword: "",
   });
@@ -19,7 +20,10 @@ const Registration = () => {
   const changeState = (e) => {
     const target = e.target;
     const name = target.name;
-    const value = target.value;
+    let value = target.value;
+    if (name === "age") {
+      value = Number(value ?? 0);
+    }
     setState((prev) => {
       return {
         ...prev,
@@ -32,20 +36,22 @@ const Registration = () => {
       .then((res) => {
         dispatch(setLoggedIn(true));
         dispatch(setToken(res?.data?.token));
-        toast.success("Logged In Successfully!");
+        toast.success("Registered Successfully!");
         history("/home");
       })
+
       .catch((error) => {
         console.log(error);
-        toast.error(error?.message);
+
+        toast.error(error.message);
         setLoading(false);
       });
     e.preventDefault();
   };
   return (
-    <div className="register-page mt-4">
+    <div className="register-page  pt-3 mt-4">
       <h2 className="text-center">Register</h2>
-      <form className="register-form">
+      <form className="register-form p-0 ">
         <div className="form-group  mt-2">
           <label htmlFor="firstname">First Name</label>
           <input
@@ -80,6 +86,18 @@ const Registration = () => {
           />
         </div>
         <div className="form-group mt-2">
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            className="form-control"
+            value={state.city}
+            onChange={changeState}
+          />
+        </div>
+
+        <div className="form-group mt-2">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -100,13 +118,14 @@ const Registration = () => {
             value={state.cpassword}
             onChange={changeState}
           />
+          <div className="mt-4 ">
+            Already have account? <Link to="/login">Login</Link>
+          </div>
         </div>
-        <button className="btn btn-primary w-100 mt-5" onClick={submitHandler}>
+
+        <button className="btn btn-primary w-100 mt-3" onClick={submitHandler}>
           Register
         </button>
-        <div className="mt-5">
-          Already have account? <Link to="/">Login</Link>
-        </div>
       </form>
     </div>
   );
