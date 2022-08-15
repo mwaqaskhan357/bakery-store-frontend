@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
-import "./header.css";
-import { FiShoppingCart } from "react-icons/fi";
-import axios from "axios";
-import Categoryfilter from "../../components/categoryfilter/Categoryfilter";
+import React, { useEffect, useState } from 'react';
+import './header.css';
+import { FiShoppingCart } from 'react-icons/fi';
+import axios from 'axios';
+import Categoryfilter from '../../components/categoryfilter/Categoryfilter';
 
-import { useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
-import { setUser } from "../../redux-toolkit/slices/authSlice";
-import { dispatch } from "../../redux-toolkit/store";
-import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
+import { setUser } from '../../redux-toolkit/slices/authSlice';
+import { dispatch } from '../../redux-toolkit/store';
+import { Link } from 'react-router-dom';
 const Header = () => {
   const token = useSelector((state) => state.login.token);
   const user = useSelector((state) => state.login.user);
+  const total_quantity = useSelector((state) => state.cart.total_quantity);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/auth/me", {
+      .get('http://localhost:5000/api/v1/auth/me', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -85,10 +86,13 @@ const Header = () => {
                 Search
               </button>
             </form>
-            <div className="cart-count d-flex align-items-center ms-3 text-warning ">
+            <Link
+              to="/cart"
+              className="cart-count d-flex align-items-center ms-3 text-warning"
+            >
               <FiShoppingCart size={30} />
-              <div className="count ms-2">0</div>
-            </div>
+              <div className="count ms-2">{total_quantity ?? 0}</div>
+            </Link>
           </div>
         </div>
       </nav>

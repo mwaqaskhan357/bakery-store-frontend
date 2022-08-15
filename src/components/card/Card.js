@@ -1,11 +1,19 @@
-import React from "react";
-import "./card.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { setsingleItem } from '../../redux-toolkit/slices/itemsSlice';
+import { dispatch } from '../../redux-toolkit/store';
+import './card.css';
 
 const Card = ({ variant }) => {
+  const history = useNavigate();
+  const handleClick = (variant) => {
+    dispatch(setsingleItem(variant));
+    history(`/items/${variant._id}`);
+  };
   return (
-    <div className="card-box">
+    <div className="card-box" onClick={() => handleClick(variant)}>
       <div className="image-container">
-        {variant?.image == "no-photo.jpg" ? (
+        {variant?.image == 'no-photo.jpg' ? (
           <img
             src="./assests/images/cake.jpg"
             alt=""

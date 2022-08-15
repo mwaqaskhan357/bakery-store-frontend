@@ -1,36 +1,53 @@
-import React from "react";
-import "./cart.css";
+import React, { useState } from 'react';
+import { removeCartItem } from '../../redux-toolkit/slices/cartSlice';
+import { dispatch } from '../../redux-toolkit/store';
+import './cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
+  const [item, setItem] = useState(props.item);
+  const handleRemove = (item) => {
+    dispatch(removeCartItem(item));
+  };
   return (
-    <div className="cart d-flex mt-5">
+    <div className="cart d-flex mt-5" key={item?._id}>
       <div className="cart-image-container me-3">
-        <img
-          src="../assests/images/cake.jpg"
-          alt=""
-          width="auto"
-          height="auto"
-          className="cart-image"
-        />
+        {item?.image == 'no-photo.jpg' ? (
+          <img
+            src="../assests/images/cake.jpg"
+            alt=""
+            width="auto"
+            height="auto"
+            className="cart-image"
+          />
+        ) : (
+          <img
+            src={item?.image}
+            alt=""
+            width="auto"
+            height="auto"
+            className="cart-image"
+          />
+        )}
       </div>
       <div className="cart-detail d-flex flex-column w-50 ms-3">
-        <div className="cart-title">Special cake</div>
-        <div className="cart-price">Rs 100</div>
-        <div className="cart-description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled
-        </div>
+        <div className="cart-title">{item?.title}</div>
+        <div className="cart-price">Rs {item?.price}</div>
+        <div className="cart-description">{item?.description}</div>
         <div className="quantity-row w-100 d-flex justify-content-between">
           <input
             className="form-control quantity-input"
             type="number"
             name="quantity"
             id="quantity"
-            defaultValue={1}
+            value={item?.quantity}
+            disabled
           />
-          <button className="btn btn-light remove-from-cart">Remove</button>
+          <button
+            className="btn btn-light remove-from-cart"
+            onClick={() => handleRemove(item)}
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>
