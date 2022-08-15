@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { removeCartItem } from '../../redux-toolkit/slices/cartSlice';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from '../../redux-toolkit/slices/cartSlice';
 import { dispatch } from '../../redux-toolkit/store';
 import './cart.css';
 
-const Cart = (props) => {
-  const [item, setItem] = useState(props.item);
-  const handleRemove = (item) => {
-    dispatch(removeCartItem(item));
-  };
+const Cart = ({ item }) => {
   return (
     <div className="cart d-flex mt-5" key={item?._id}>
       <div className="cart-image-container me-3">
@@ -33,20 +32,19 @@ const Cart = (props) => {
         <div className="cart-title">{item?.title}</div>
         <div className="cart-price">Rs {item?.price}</div>
         <div className="cart-description">{item?.description}</div>
-        <div className="quantity-row w-100 d-flex justify-content-between">
-          <input
-            className="form-control quantity-input"
-            type="number"
-            name="quantity"
-            id="quantity"
-            value={item?.quantity}
-            disabled
-          />
+        <div className="quantity-row w-100 d-flex align-items-center justify-content-end">
           <button
-            className="btn btn-light remove-from-cart"
-            onClick={() => handleRemove(item)}
+            className="decrease-btn"
+            onClick={() => dispatch(decreaseQuantity(item?._id))}
           >
-            Remove
+            -
+          </button>
+          <div className="quantity">{item?.quantity}</div>
+          <button
+            className="increase-btn"
+            onClick={() => dispatch(increaseQuantity(item?._id))}
+          >
+            +
           </button>
         </div>
       </div>

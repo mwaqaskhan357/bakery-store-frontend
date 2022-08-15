@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../../components/header/Header';
-import { setCartItems } from '../../redux-toolkit/slices/cartSlice';
+import { addItem } from '../../redux-toolkit/slices/cartSlice';
 import { dispatch } from '../../redux-toolkit/store';
 import './item.css';
 
 const Item = () => {
   const variant = useSelector((state) => state.items.singleItem);
   const handleAddToCart = (variant) => {
-    dispatch(setCartItems(variant));
+    dispatch(addItem(variant));
   };
   return (
     <div className="item-page">

@@ -13,15 +13,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.remove-from-cart {
-  width: fit-content;
-  min-width: 150px;
-  padding: 3px 10px;
-  word-wrap: normal;
-}
-
-.quantity-input {
-  width: 100px !important;
+.decrease-btn,
+.increase-btn,
+.quantity {
+  padding: 3px 15px;
+  border: 1px solid grey;
+  outline: none;
+  box-shadow: none;
 }
 
 .cart-detail {
