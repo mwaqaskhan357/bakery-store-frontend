@@ -9,6 +9,7 @@ import Card from './components/card/Card';
 import Variant from './pages/Variant';
 import Categoryfilter from './components/categoryfilter/Categoryfilter';
 import Items from './components/Items';
+import OrdersPage from './pages/orders/OrdersPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/card" element={<Card />} />
           <Route path="/variant" element={<Variant />} />
+          <Route path="/orders" element={<OrdersPage />} />
           <Route path="/categoryfilter" element={<Categoryfilter />} />
           <Route path="/items" element={<Items />} />
         </Routes>
